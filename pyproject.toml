@@ -1,0 +1,23 @@
+[project]
+name = "spanner"
+version = "0.1.0"
+description = "Spanner client package implementing the Google AI Toolbox."
+readme = "README.md"
+authors = [
+    { name = "kpeder", email = "kpedersen@pythian.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "google-cloud-logging>=3.13.0",
+    "google-cloud-spanner>=3.63.0",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+spanner = "spanner:main"
+
+[build-system]
+requires = ["uv_build>=0.8.5,<0.9.0"]
+build-backend = "uv_build"

@@ -1,0 +1,4 @@
+spanner:
+  project_id: "vertex-ai-experiments-448517"
+  instance_id: "spanner"
+  database_id: "retail"

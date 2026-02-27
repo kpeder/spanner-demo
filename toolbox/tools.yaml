@@ -1,0 +1,8 @@
+kind: sources
+name: "spanner-cymbal"
+type: "spanner"
+project: "vertex-ai-experiments-448517"
+instance: "spanner"
+database: "retail"
+dialect: "googlesql"
+---
