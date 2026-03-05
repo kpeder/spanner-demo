@@ -10,6 +10,46 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def exec_query(query: str,
+               protocol: Protocol = Protocol.MCP_v20251125,
+               url: str = "http://localhost:5000") -> str | None:
+    """
+    Executes a SQL query using the 'exec_query' tool from a toolbox server.
+
+    Args:
+        query: The SQL query to execute.
+        protocol: The toolbox communication protocol to use.
+        url: The URL of the toolbox server, including protocol and port.
+
+    Returns:
+        A JSON string representing the query results,
+        or None if an error occurs.
+    """
+    try:
+        logger.info("Initializing toolbox client for server with URL %s", url)
+        with ToolboxSyncClient(url=url, protocol=protocol) as toolbox:
+
+            logger.info("Fetching available tools from toolbox server.")
+            tools = toolbox.load_toolset()
+            for tool in tools:
+                logger.info("Found tool '%s' with description '%s'", tool._name, tool._description)
+
+            logger.info("Found %d tools.", len(tools))
+
+            logger.info("Loading tools...")
+            query_tool = load_tool("exec_query", toolbox)
+
+            if query_tool:
+                logger.info("Executing query...")
+                return query_tool(query)
+            else:
+                return None
+
+    except Exception as e:
+        logger.error("An error occurred while executing the query: %s", e, exc_info=True)
+        return None
+
+
 def fetch_schema(filter: str = "%",
                  protocol: Protocol = Protocol.MCP_v20251125,
                  schema: str = "",

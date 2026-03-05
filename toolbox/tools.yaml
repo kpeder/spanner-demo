@@ -7,6 +7,12 @@ sources:
     project: "vertex-ai-experiments-448517"
 
 tools:
+  exec_query:
+    description: "Execute the supplied GoogleSQL query against the database."
+    kind: "spanner-execute-sql"
+    readOnly: true
+    source: "spanner_retail"
+
   get_tables:
     description: "Query the INFORMATION_SCHEMA for tables in a schema."
     kind: "spanner-sql"
@@ -65,6 +71,7 @@ tools:
 
 toolsets:
   spanner_database_tools:
+    - exec_query
     - get_tables
     - get_columns
     - get_keys
