@@ -3,17 +3,16 @@ from google.api_core import exceptions
 
 import logging
 
-# Use the inherited logger for the package
+
 logger = logging.getLogger(__name__)
 
-def query_database(
-    project: str,
-    instance_id: str,
-    database_id: str,
-    query_string: str,
-    query_timeout: float,
-    is_partitioned: bool,
-):
+
+def query_database(project: str,
+                   instance_id: str,
+                   database_id: str,
+                   query_string: str,
+                   query_timeout: float,
+                   is_partitioned: bool) -> list | None:
     """
     Executes a query against a Google Cloud Spanner database.
 

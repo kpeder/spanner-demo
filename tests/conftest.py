@@ -31,6 +31,9 @@ def pytest_addoption(parser):
     parser.addoption(
         "--vertexai-model-name", action="store", help="Vertex AI model name for integration tests."
     )
+    parser.addoption(
+        "--toolbox-url", action="store", help="Toolbox server URL for integration tests."
+    )
 
 
 @pytest.fixture(scope="session")
@@ -38,6 +41,13 @@ def config(request):
     """Reads the test configuration, allowing command-line overrides."""
     with open("tests/config.yaml", "r") as f:
         config_data = yaml.safe_load(f)
+
+    if "spanner" not in config_data:
+        config_data["spanner"] = {}
+    if "vertexai" not in config_data:
+        config_data["vertexai"] = {}
+    if "toolbox" not in config_data:
+        config_data["toolbox"] = {}
 
     # Override config file with command-line arguments if provided;
     # global arguments are overridable by service-specific arguments,
@@ -67,22 +77,25 @@ def config(request):
     if vertexai_model_name_override := request.config.getoption("--vertexai-model-name"):
         config_data["vertexai"]["model_name"] = vertexai_model_name_override
 
+    if toolbox_url_override := request.config.getoption("--toolbox-url"):
+        config_data["toolbox"]["url"] = toolbox_url_override
+
     return config_data
 
 
 @pytest.fixture(scope="session")
 def spanner_config(config):
     """Returns the Spanner-specific configuration."""
-    if "spanner" not in config:
-        pytest.skip("Skipping Spanner tests: 'spanner' section not in config.yaml.")
-
     return config["spanner"]
 
 
 @pytest.fixture(scope="session")
 def vertexai_config(config):
     """Returns the Vertex AI-specific configuration."""
-    if "vertexai" not in config:
-        pytest.skip("Skipping AI tests: 'vertexai' section not in config.yaml.")
-
     return config["vertexai"]
+
+
+@pytest.fixture(scope="session")
+def toolbox_config(config):
+    """Returns the Toolbox-specific configuration."""
+    return config["toolbox"]

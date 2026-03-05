@@ -14,5 +14,7 @@ spanner:
       tables: ["Addresses", "Orders", "Payments", "ShoppingCarts", "Users"]
 vertexai:
   project: "vertex-ai-experiments-448517"
-  location: "northamerica-northeast1"
+  location: "us-east1"
   model_name: "gemini-2.5-flash-lite"
+toolbox:
+  url: "http://localhost:5000"
