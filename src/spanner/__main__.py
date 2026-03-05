@@ -35,7 +35,7 @@ async def main():
         user_prompt = args.prompt
     else:
         user_prompt = input("Enter your question: ")
-    
+
     fetch_schema_opts = {"filter": args.filter, "schema": args.schema}
     if args.toolbox_url:
         fetch_schema_opts["url"] = args.toolbox_url
