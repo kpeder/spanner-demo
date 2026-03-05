@@ -1,7 +1,71 @@
-kind: sources
-name: "spanner-retail"
-type: "spanner"
-project: "vertex-ai-experiments-448517"
-instance: "spanner"
-database: "retail"
-dialect: "googlesql"
+sources:
+  spanner_retail:
+    database: "retail"
+    dialect: "googlesql"
+    instance: "spanner"
+    kind: "spanner"
+    project: "vertex-ai-experiments-448517"
+
+tools:
+  get_tables:
+    description: "Query the INFORMATION_SCHEMA for tables in a schema."
+    kind: "spanner-sql"
+    parameters:
+      - description: "A string filter to apply to the table names."
+        name: "filter"
+        type: "string"
+      - description: "The name of the schema."
+        name: "schema_name"
+        type: "string"
+    readOnly: true
+    source: "spanner_retail"
+    statement: "SELECT DISTINCT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = @schema_name and TABLE_NAME LIKE @filter;"
+
+  get_columns:
+    description: "Query the INFORMATION_SCHEMA for columns in a table."
+    kind: "spanner-sql"
+    parameters:
+      - description: "The name of the schema."
+        name: "schema_name"
+        type: "string"
+      - description: "The name of the table."
+        name: "table"
+        type: "string"
+    readOnly: true
+    source: "spanner_retail"
+    statement: "SELECT COLUMN_NAME, SPANNER_TYPE, IS_NULLABLE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = @schema_name AND TABLE_NAME = @table;"
+
+  get_keys:
+    description: "Query the INFORMATION_SCHEMA for key constraints on a table."
+    kind: "spanner-sql"
+    parameters:
+      - description: "The name of the schema."
+        name: "schema_name"
+        type: "string"
+      - description: "The name of the table."
+        name: "table"
+        type: "string"
+    readOnly: true
+    source: "spanner_retail"
+    statement: "SELECT CONSTRAINT_NAME, COLUMN_NAME, ORDINAL_POSITION FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE CONSTRAINT_SCHEMA = @schema_name AND TABLE_NAME = @table;"
+
+  get_indexes:
+    description: "Query the INFORMATION_SCHEMA for indexes on a table."
+    kind: "spanner-sql"
+    parameters:
+      - description: "The name of the schema."
+        name: "schema_name"
+        type: "string"
+      - description: "The name of the table."
+        name: "table"
+        type: "string"
+    readOnly: true
+    source: "spanner_retail"
+    statement: "SELECT COLUMN_NAME, INDEX_TYPE FROM INFORMATION_SCHEMA.INDEX_COLUMNS WHERE TABLE_SCHEMA = @schema_name AND TABLE_NAME = @table;"
+
+toolsets:
+  spanner_database_tools:
+    - get_tables
+    - get_columns
+    - get_keys
+    - get_indexes
