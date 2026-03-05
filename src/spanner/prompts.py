@@ -35,11 +35,11 @@ SYSTEM_PROMPT['NLP_to_SQL'] = \
 def get_system_prompt(template: str, context: list[str] = []) -> str:
     """
     Renders a system prompt from template with context injected.
-    
+
     Args:
         template: A system prompt boilerplate with positional placeholders for context.
         context: A list of string values to insert into the template via string format function.
-    
+
     Returns:
         The rendered system prompt, or None if an error occurs.
     """

@@ -55,7 +55,7 @@ def fetch_schema(filter: str = "%",
                 if tables is not None:
                     if not isinstance(tables, list):
                         tables = [tables]
-                        
+
                     if fetch_columns is not None:
                         for table in tables:
                             c = fetch_columns(schema, table['TABLE_NAME'])
@@ -77,4 +77,4 @@ def fetch_schema(filter: str = "%",
 
     except Exception as e:
         logger.error("An error occurred while fetching tools: %s", e, exc_info=True)
-        return None   
+        return None

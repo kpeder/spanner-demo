@@ -49,7 +49,7 @@ async def main():
                 if tables is not None:
                     if not isinstance(tables, list):
                         tables = [tables]
-                        
+
                     if fetch_columns is not None:
                         for table in tables:
                             c = await fetch_columns(schema, table['TABLE_NAME'])
@@ -69,7 +69,7 @@ async def main():
 
     except Exception as e:
         logger.error("An error occurred while fetching tools: %s", e, exc_info=True)
-        return None   
+        return None
 
 
 if __name__ == '__main__':

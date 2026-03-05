@@ -49,7 +49,7 @@ async def main():
 
     except Exception as e:
         logger.error("An error occurred while fetching tools: %s", e, exc_info=True)
-        return None   
+        return None
 
 
 if __name__ == '__main__':

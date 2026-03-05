@@ -16,7 +16,7 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
     ```$ cd spanner-demo```
 
 1. Set up a virtual environment and install the required packages:
-    
+
     ```uv venv --system-site-packages --python 3.12```
 
     ```$ uv sync```
