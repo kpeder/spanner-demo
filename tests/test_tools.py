@@ -1,5 +1,32 @@
+from spanner.tools import exec_query, fetch_schema
+
 import json
-from spanner.tools import fetch_schema
+
+
+def test_exec_query_success(toolbox_config, spanner_config):
+    """Tests successfully executing a query."""
+    table_name = spanner_config['fixtures']['columns'][0]['tables'][0]
+    query = "SELECT table_name FROM information_schema.tables WHERE table_name = '{}';".format(table_name)
+
+    result = exec_query(query=query, url=toolbox_config["url"])
+    assert result is not None
+
+    data = json.loads(result)
+    assert isinstance(data, object)
+    assert data['table_name'] == table_name
+
+
+def test_exec_query_invalid_query(toolbox_config):
+    """Tests executing an invalid query."""
+    result = exec_query(query="SELECT * FROM NonExistentTable;", url=toolbox_config["url"])
+    assert result is not None
+    assert isinstance(result, str)
+
+
+def test_exec_query_client_exception():
+    """Tests exec_query when the ToolboxSyncClient raises an exception."""
+    result = exec_query(query="SELECT 1", url="http://localhost:9999")  # Non-existent server
+    assert result is None
 
 
 def test_fetch_schema_success(toolbox_config, spanner_config):
