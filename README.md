@@ -45,22 +45,8 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
 
     Example configurations are found in the toolbox directory. In particular, the spanner project must be updated.
 
-1. Run an example query:
+1. Run the main module:
 
-    ```$ uv run python3 -m spanner.examples.genai_nlp_to_sql --project vertex-ai-experiments-448517 --location us-east1 --model gemini-2.5-flash --prompt 'What is the maximum number of items in a single order?'```
+    ```$ uv run python3 -m spanner --project vertex-ai-experiments-448517 --location us-east1 --model gemini-2.5-flash```
 
-    Expected output (example):
-
-    ```
-    SELECT
-        MAX(item_count)
-    FROM (
-        SELECT
-            OrderID,
-            COUNT(OrderItemID) AS item_count
-        FROM
-            OrderItems
-        GROUP BY
-            OrderID
-    );
-    ```
+    This command will prompt you to ask a question about the dataset, generate a GoogleSQL query, and offer to run it for you against the database.

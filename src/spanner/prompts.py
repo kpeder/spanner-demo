@@ -27,7 +27,7 @@ SYSTEM_PROMPT['NLP_to_SQL'] = \
     - Do NOT hallucinate. If you are unable to generate an accurate query to answer the question, state that the request can't be fulfilled.
     - Prioritize the user's question and pay attention to its semantics. For example, ensure that aggregations (count, sum, average) are addressed.
     - Use GoogleSQL syntax and builtin Spanner functions only.
-    - Return only the SQL query, without markdown formatting or natrual language explanation.
+    - Return **only** the SQL query as plain text, without markdown formatting, labels or natural language explanation.
     - Add spacing and indentation to the SQL statement for readability. End the statement with a semicolon.
     """
 
