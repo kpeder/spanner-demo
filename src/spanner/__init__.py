@@ -16,18 +16,15 @@ logger = logging.getLogger(__name__)
 # 2. Set the default logging level.
 logger.setLevel(logging.INFO)
 
-# 3. Prevent log messages from being passed to the root logger.
-logger.propagate = False
-
-# 4. Add handlers only if they haven't been added before.
+# 3. Add handlers only if they haven't been added before.
 if not logger.handlers:
-    # 5. Create and add a console handler.
+    # 4. Create and add a console handler.
     console_handler = logging.StreamHandler(sys.stdout)
     formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
 
-    # 6. Create and add Google Cloud Logging handler if available.
+    # 5. Create and add Google Cloud Logging handler if available.
     if GCP_LOGGING_AVAILABLE:
         client = google_logging.Client()
         gcp_handler = CloudLoggingHandler(client, name="spanner-service")
