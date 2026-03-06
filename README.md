@@ -50,3 +50,5 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
     ```$ uv run python3 -m spanner --project vertex-ai-experiments-448517 --location us-east1 --model gemini-2.5-flash```
 
     This command will prompt you to ask a question about the dataset, generate a GoogleSQL query, and offer to run it for you against the database.
+
+    See the [EXAMPLE.md](EXAMPLE.md) for sample output.
