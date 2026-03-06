@@ -1,5 +1,6 @@
 from spanner.prompts import get_system_prompt, SYSTEM_PROMPT
 from spanner.tools import exec_query, fetch_schema
+from spanner.results import render_results_as_table
 
 from google import genai
 
@@ -23,6 +24,7 @@ async def main():
     parser.add_argument("--schema", default="", help="A specific schema to fetch schema elements from.")
     parser.add_argument("--stable-api", action="store_true", help="Use the stable instead of the beta API.")
     parser.add_argument("--toolbox-url", help="The URL of the toolbox server.")
+    parser.add_argument("--no-table", action="store_true", help="Disable rendering query results as a table.")
 
     args = parser.parse_args()
 
@@ -70,8 +72,11 @@ async def main():
                 query_opts["url"] = args.toolbox_url
             print("Executing query...")
             results = exec_query(**query_opts)
-            print("Query Results:")
-            print(results)
+            if not args.no_table:
+                render_results_as_table(results)
+            else:
+                print("Query Results (raw):")
+                print(results)
 
 
 if __name__ == '__main__':
