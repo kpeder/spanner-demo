@@ -11,13 +11,13 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
 1. If necessary, install Astral uv, instructions [here](https://docs.astral.sh/uv/getting-started/installation/).
 1. Clone this repository:
 
-    ```git clone git@github.com:kpeder/spanner-demo.git```
+    ```$ git clone git@github.com:kpeder/spanner-demo.git```
 
     ```$ cd spanner-demo```
 
 1. Set up a virtual environment and install the required packages:
 
-    ```uv venv --system-site-packages --python 3.12```
+    ```$ uv venv --system-site-packages --python 3.12```
 
     ```$ uv sync```
 

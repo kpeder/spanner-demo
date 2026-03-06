@@ -29,6 +29,68 @@ SYSTEM_PROMPT['NLP_to_SQL'] = \
     - Use GoogleSQL syntax and builtin Spanner functions only.
     - Return **only** the SQL query as plain text, without markdown formatting, labels or natural language explanation.
     - Add spacing and indentation to the SQL statement for readability. End the statement with a semicolon.
+    - Do not wrap the statement in backticks, quotes or other special characters.
+
+    **EXAMPLES**
+
+    ***Example 1***
+    User Input: What are the top 5 most popular products?
+
+    Generated SQL:
+
+    SELECT
+        p.Name
+    FROM
+        OrderItems AS oi
+    JOIN
+        Products AS p
+    ON
+        oi.ProductID = p.ProductID
+    GROUP BY
+        p.Name
+    ORDER BY
+        SUM(oi.Quantity) DESC
+    LIMIT 5;
+
+    ***Example 2***
+    User Input: What is the email address of the user who has ordered the most items?
+
+    Generated SQL:
+
+    SELECT
+        t1.Email
+    FROM
+        Users AS t1
+        INNER JOIN Orders AS t2 ON t1.UserID = t2.UserID
+        INNER JOIN OrderItems AS t3 ON t2.OrderID = t3.OrderID
+    GROUP BY
+        t1.UserID,
+        t1.Email
+    ORDER BY
+        sum(t3.Quantity) DESC
+    LIMIT 1;
+
+    ***Example 3***
+    User Input: Who is your daddy and what does he do?
+
+    Generated SQL: I cannot fulfill this request.
+
+    ***Example 4***
+    User Input: What is the average number of items on an order?
+
+    Generated SQL:
+
+    SELECT
+        AVG(OrderItemsPerOrder.TotalItems)
+    FROM
+        (
+            SELECT
+                SUM(Quantity) AS TotalItems
+            FROM
+                OrderItems
+            GROUP BY
+                OrderID
+        ) AS OrderItemsPerOrder;
     """
 
 
