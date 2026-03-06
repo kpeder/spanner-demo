@@ -34,7 +34,7 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
 
 1. Create a Spanner instance:
 
-    ```$ gcloud spanner instances create spanner --config=regional-northamerica-northeast1 --edition=ENTERPRISE --processing-units=100```
+    ```$ gcloud spanner instances create spanner --config=regional-us-east1 --edition=ENTERPRISE --processing-units=100```
 
 1. Create a database and load test data using the [UI](https://console.cloud.google.com/spanner/instances/spanner/details/databases). Click the `Explore datasets` link, select `Retail`, and click the `Create database` button.
 
@@ -47,7 +47,7 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
 
 1. Run the main module:
 
-    ```$ uv run python3 -m spanner --project vertex-ai-experiments-448517 --location us-east1 --model gemini-2.5-flash```
+    ```$ uv run python3 -m spanner --project [your-project-id] --location us-east1 --model gemini-2.5-flash```
 
     This command will prompt you to ask a question about the dataset, generate a GoogleSQL query, and offer to run it for you against the database.
 
