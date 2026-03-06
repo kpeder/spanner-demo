@@ -10,3 +10,4 @@ Here is a list of potential features and improvements for the Spanner Client and
 - [ ] **Add an option to truncate output:** Since database queries can return a great deal of data, set a default maximum for output to the console.
 - [ ] **Add flexible output formats:** Extend the results handling to allow saving output to different formats, such as CSV or JSON, controlled by a command-line flag (e.g., `--output-format csv`).
 - [ ] **Improve configuration management:** Introduce a configuration file (e.g., `config.yaml`) to manage settings like project ID, location, and model name, reducing reliance on command-line arguments.
+- [ ] **Tune the prompt to remove backticks:** Modify the behaviour of the model to prevent output in markdown format ```sql ... ```; alternatively, scrub this from the model output when encountered.
