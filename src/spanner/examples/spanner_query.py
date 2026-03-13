@@ -5,6 +5,7 @@ from spanner.query import query_database
 
 logger = logging.getLogger('spanner.examples.spannner_query')
 
+
 def main():
     """Main function to parse arguments and query Spanner."""
 
@@ -42,6 +43,7 @@ def main():
 
     except Exception as e:
         print(f"An error occurred during the example run: {e}")
+
 
 if __name__ == '__main__':
     main()

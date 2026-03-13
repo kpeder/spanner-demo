@@ -48,17 +48,16 @@ async def main():
 
         response = client.models.generate_content(
             model=args.model,
-                contents=
-                    [
-                        genai.types.Part.from_text(text=user_prompt)
-                    ],
-                config=genai.types.GenerateContentConfig(
-                    temperature=0.0,
-                    top_p=0.3,
-                    top_k=6,
-                    max_output_tokens=1024,
-                    system_instruction=[system_instruction]
-                )
+            contents=[
+                genai.types.Part.from_text(text=user_prompt)
+            ],
+            config=genai.types.GenerateContentConfig(
+                temperature=0.0,
+                top_p=0.3,
+                top_k=6,
+                max_output_tokens=1024,
+                system_instruction=[system_instruction]
+            )
         )
 
         generated_sql = response.text

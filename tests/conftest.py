@@ -1,6 +1,3 @@
-from google.cloud import spanner_v1
-from google.api_core import exceptions
-
 import yaml
 import pytest
 
