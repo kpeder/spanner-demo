@@ -52,3 +52,14 @@ This demo is tested on Ubuntu Linux 24.04 (x86_64). It's expected to work on com
     This command will prompt you to ask a question about the dataset, generate a GoogleSQL query, and offer to run it for you against the database.
 
     See the [EXAMPLE.md](EXAMPLE.md) for sample output.
+
+## Contributing
+All tests and checks must pass.
+
+1. To run tests:
+
+    ```$ uv run pytest --cov```
+
+1. To run pre-commit checks:
+
+    ```$ uv run pre-commit run -a```
