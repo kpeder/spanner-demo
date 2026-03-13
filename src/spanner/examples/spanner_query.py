@@ -7,7 +7,7 @@ logger = logging.getLogger('spanner.examples.spannner_query')
 
 
 def main():
-    """Main function to parse arguments and query Spanner."""
+    """Main function to parse arguments and query Spanner directly."""
 
     parser = argparse.ArgumentParser(description="Query a Google Cloud Spanner database.")
     parser.add_argument("--project-id", required=True, help="Your Google Cloud project ID.")
