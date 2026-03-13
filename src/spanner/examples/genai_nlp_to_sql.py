@@ -12,7 +12,7 @@ logger = logging.getLogger('spanner.examples.genai_nlp_to_sql')
 
 
 async def main():
-    """An example script that fetches schema info, loads a Gemini model, and one shot prompts the model."""
+    """An example script that fetches schema info, loads a Gemini model, and one shot prompts the model to return an SQL query."""
 
     parser = argparse.ArgumentParser(description="A Spanner query agent using Gemini and Vertex AI.")
     parser.add_argument("--filter", default="%", help="A string filter to match against table names. Uses the '%' wildcard.")

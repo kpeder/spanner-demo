@@ -8,11 +8,11 @@ logger = logging.getLogger('spanner.examples.genai_get_schema_tool')
 
 
 def main():
-    """An example script that loads a Gemini model, creates a chat session, and registers the fetch_schema tool for the model to use."""
+    """An example script that initializes the client and lists available models."""
 
-    parser = argparse.ArgumentParser(description="A Spanner query agent using Gemini and Vertex AI.")
+    parser = argparse.ArgumentParser(description="A script to list available models from the Vertex AI API.")
     parser.add_argument("--location", required=True, help="The Google Cloud location (e.g., 'us-central1').")
-    parser.add_argument("--project", required=True, help="The Google Cloud project ID.")
+    parser.add_argument("--project", required=True, help="The Google Cloud project ID (e.g., 'my-project').")
     parser.add_argument("--stable-api", action="store_true", help="Use the stable instead of the beta API.")
 
     args = parser.parse_args()
