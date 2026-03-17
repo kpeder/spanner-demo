@@ -6,6 +6,21 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def is_sql_query(text: str) -> bool:
+    """
+    Checks if a string is a SQL query.
+
+    Args:
+        text: The string to process.
+
+    Returns:
+        True if the string is a SQL query, False otherwise.
+    """
+    # A simple check to see if the text starts with common SQL commands.
+    sql_keywords = ["select", "insert", "update", "delete", "with"]
+    return any(text.lower().strip().startswith(keyword) for keyword in sql_keywords)
+
+
 def render_results_as_table(json_results: str) -> None:
     """
     Parses a JSON string of query results and prints them in a tabular format using pandas.

@@ -1,7 +1,29 @@
-from spanner.results import render_results_as_table
+from spanner.results import is_sql_query, render_results_as_table
 from unittest.mock import patch
 
 import json
+import pytest
+
+
+@pytest.mark.parametrize(
+    "query, expected",
+    [
+        ("SELECT * FROM my_table;", True),
+        ("select * from my_table;", True),
+        ("  SELECT * FROM my_table;  ", True),
+        ("INSERT INTO my_table VALUES (1, 'test');", True),
+        ("UPDATE my_table SET name = 'new_test' WHERE id = 1;", True),
+        ("DELETE FROM my_table WHERE id = 1;", True),
+        ("WITH my_cte AS (SELECT 1) SELECT * FROM my_cte;", True),
+        ("DROP TABLE my_table;", False),
+        ("This is not a SQL query.", False),
+        ("I cannot fulfill this request.", False),
+        ("", False),
+    ],
+)
+def test_is_sql_query(query, expected):
+    """Tests the is_sql_query function with various inputs."""
+    assert is_sql_query(query) == expected
 
 
 def test_render_results_as_table_success(capsys):
