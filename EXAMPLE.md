@@ -100,7 +100,7 @@ Executing query...
 2026-03-24 14:26:02,028 - spanner.toolbox - INFO - Loading the exec_query tool from the toolbox.
 2026-03-24 14:26:02,030 - spanner.tools - INFO - Executing query...
 Query Results:
-     
+
 0  40
 Enter your next question: stop
 Waiting up to 5 seconds.
@@ -194,7 +194,7 @@ spanner_user: could you run this query for me?
 2026-03-24 14:29:21,411 - spanner.toolbox - INFO - Loading the exec_query tool from the toolbox.
 2026-03-24 14:29:21,414 - spanner.tools - INFO - Executing query...
 Query Results:
-     
+
 0  44
 spanner_nlp_agent: There are 44 users with open shopping carts.
 spanner_user: excellent. please ask me whether I would like to run the query each time that you generate one. how many users have open shopping carts as a percentage of total users?
@@ -217,7 +217,7 @@ spanner_user: yes!
 2026-03-24 14:30:42,359 - spanner.toolbox - INFO - Loading the exec_query tool from the toolbox.
 2026-03-24 14:30:42,363 - spanner.tools - INFO - Executing query...
 Query Results:
-     
+
 0  88
 spanner_nlp_agent: 88.0% of the total users have open shopping carts.
 spanner_user: stop
