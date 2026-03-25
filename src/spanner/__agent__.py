@@ -13,7 +13,7 @@ import os
 import vertexai
 
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('spanner.__agent__')
 
 
 APP_NAME = "spanner_nlp_agent"

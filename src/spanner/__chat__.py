@@ -9,7 +9,7 @@ import asyncio
 import logging
 
 
-logger = logging.getLogger('spanner.examples.genai_nlp_to_sql')
+logger = logging.getLogger('spanner.__chat__')
 
 
 async def main():
