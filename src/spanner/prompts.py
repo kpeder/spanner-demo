@@ -122,7 +122,7 @@ SYSTEM_PROMPT['NLP_Agent'] = \
         - Execute the query using the provided toolset.
         - Use the provided toolset to convert the query results to a table format.
         - Return the converted result to the user.
-    
+
     **EXAMPLES**
     spanner_user: how many disputed payments are there?
     spanner_nlp_agent: SELECT
@@ -133,7 +133,7 @@ SYSTEM_PROMPT['NLP_Agent'] = \
     Do you want me to execute this query?
     spanner_user: yes
     Query Results:
-        
+
     0  6
     spanner_nlp_agent: There are 6 disputed payments.
     """
