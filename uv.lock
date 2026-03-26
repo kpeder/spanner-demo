@@ -2691,7 +2691,6 @@ dependencies = [
     { name = "pytest-cov" },
     { name = "pyyaml" },
     { name = "toolbox-core" },
-    { name = "vertexai" },
 ]
 
 [package.metadata]
@@ -2706,7 +2705,6 @@ requires-dist = [
     { name = "pytest-cov", specifier = ">=7.0.0" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "toolbox-core", specifier = ">=0.5.10" },
-    { name = "vertexai", specifier = ">=1.43.0" },
 ]
 
 [[package]]
@@ -2900,18 +2898,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/e3/ad/4a96c425be6fb67e0621e62d86c402b4a17ab2be7f7c055d9bd2f638b9e2/uvicorn-0.42.0.tar.gz", hash = "sha256:9b1f190ce15a2dd22e7758651d9b6d12df09a13d51ba5bf4fc33c383a48e1775", size = 85393, upload-time = "2026-03-16T06:19:50.077Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0a/89/f8827ccff89c1586027a105e5630ff6139a64da2515e24dafe860bd9ae4d/uvicorn-0.42.0-py3-none-any.whl", hash = "sha256:96c30f5c7abe6f74ae8900a70e92b85ad6613b745d4879eb9b16ccad15645359", size = 68830, upload-time = "2026-03-16T06:19:48.325Z" },
-]
-
-[[package]]
-name = "vertexai"
-version = "1.43.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "google-cloud-aiplatform" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/76/73/ce7e141c6b89ff9e1d09c4a278dba5883fee8a3d4d48a817609dc628be7e/vertexai-1.43.0.tar.gz", hash = "sha256:c3646d1cc6cc7af78daa62cac2aed0bce13a0eb35e8a27ab23d1fadfb6c57752", size = 8389, upload-time = "2024-03-07T20:22:07.064Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/fc/e1bd1f4bc7e5853faa1ccf67a825cc6fc3fafc90db58a222dda7fb2e898c/vertexai-1.43.0-py3-none-any.whl", hash = "sha256:2f53bc3d4c4a6610f70f63fcbc07c41fc45ff29c4fde09d65328eedbef90b642", size = 6427, upload-time = "2024-03-07T20:22:05.206Z" },
 ]
 
 [[package]]

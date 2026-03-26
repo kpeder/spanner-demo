@@ -4,13 +4,11 @@ from google import genai
 
 from spanner.prompts import get_system_prompt, SYSTEM_PROMPT
 from spanner.tools import exec_query, fetch_schema
-from spanner.results import render_results_as_table
 
 import argparse
 import asyncio
 import logging
 import os
-import vertexai
 
 
 logger = logging.getLogger('spanner.__agent__')
@@ -33,11 +31,11 @@ async def main():
 
     args = parser.parse_args()
 
-    system_instruction = get_system_prompt(SYSTEM_PROMPT['NLP_Agent'])
-
-    vertexai.init(project=args.project, location=args.location)
-
     os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
+    os.environ["GOOGLE_GENAI_PROJECT"] = args.project
+    os.environ["GOOGLE_GENAI_LOCATION"] = args.location
+
+    system_instruction = get_system_prompt(SYSTEM_PROMPT['NLP_Agent'])
 
     try:
         agent = Agent(
@@ -45,7 +43,7 @@ async def main():
             name=APP_NAME,
             description="A natural language processing agent for Spanner databases.",
             instruction=system_instruction,
-            tools=[exec_query, fetch_schema, render_results_as_table]
+            tools=[exec_query, fetch_schema]
         )
     except Exception as e:
         logger.error("An error occurred while creating the agent: %s", e, exc_info=True)
